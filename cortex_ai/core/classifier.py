@@ -306,7 +306,7 @@ def _llm_classify_files(rows: List[Dict[str, Any]]) -> Dict[str, LlmClassificati
 
     try:
         response = client.responses.create(
-            model="gpt-5-nano",
+            model="gpt-5.1",
             input=prompt,
         )
     except Exception as exc:
