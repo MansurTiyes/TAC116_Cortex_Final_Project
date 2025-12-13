@@ -26,6 +26,7 @@ from ..utils.console import (
 )
 
 import typer
+from rich.progress import Progress, SpinnerColumn, TextColumn
 
 app = typer.Typer(no_args_is_help=True, help="Cortex AI – AI-assisted folder organizer.")
 
@@ -81,7 +82,13 @@ def scan(
     print_scan_classifying()
 
     try:
-        classified_df = classifier.classify_files(df, min_confidence=min_confidence)
+        with Progress(
+                SpinnerColumn(),
+                TextColumn("[progress.description]{task.description}"),
+                transient=True,
+        ) as progress:
+            progress.add_task(description="Classifying with LLM...", total=None)
+            classified_df = classifier.classify_files(df, min_confidence=min_confidence)
     except MissingApiKeyError:
         print_scan_error_missing_api_key()
         raise typer.Exit(code=1)
