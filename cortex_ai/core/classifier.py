@@ -95,16 +95,6 @@ DEFAULT_EXTENSION_MAP: Dict[str, str] = {
     ".pkg": "archives_installers",
     ".exe": "archives_installers",
 
-    ".pdf": "documents_misc",
-    ".doc": "documents_misc",
-    ".docx": "documents_misc",
-    ".ppt": "documents_misc",
-    ".pptx": "documents_misc",
-    ".xls": "documents_misc",
-    ".xlsx": "documents_misc",
-    ".txt": "documents_misc",
-    ".md": "documents_misc",
-
     # Obvious junk
     ".tmp": "trash_or_temp",
     ".log": "trash_or_temp",
